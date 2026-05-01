@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Bivek Man Singh – SAP BASIS, Infrastructure & Network Specialist based in Nepal.">
+  <title>Bivek Man Singh | IT Professional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #f6f6f2;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --accent: #3b5bdb;
+      --accent-hover: #2f4cc4;
+      --accent-light: #eef2ff;
+      --accent-rgb: 59, 91, 219;
+      --border-light: #e5e7eb;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.10);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+      --icon-bg: #f1f3f9;
+      --timeline-dot: #3b5bdb;
+      --nav-blur-bg: rgba(246,246,242,0.85);
+    }
+    body.dark {
+      --bg-primary: #0b0c14;
+      --bg-secondary: #111320;
+      --bg-card: #161828;
+      --text-primary: #f0f1f8;
+      --text-secondary: #9ca3c8;
+      --accent: #7c8ff5;
+      --accent-hover: #a5b3ff;
+      --accent-light: #1a1f40;
+      --accent-rgb: 124, 143, 245;
+      --border-light: #1f2340;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+      --icon-bg: #1f2340;
+      --nav-blur-bg: rgba(11,12,20,0.88);
+    }
+
+    html { scroll-padding-top: 72px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 6rem 0; }
+
+    /* SECTION TITLE */
+    .section-label {
+      display: inline-block; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+      background: var(--accent-light); padding: 0.3rem 0.9rem; border-radius: 99px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem; font-weight: 400; letter-spacing: -0.01em;
+      color: var(--text-primary); margin-bottom: 2.5rem; line-height: 1.2;
+    }
+
+    /* FADE-IN ANIMATION */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.65s cubic-bezier(.22,.68,0,1.2), transform 0.65s cubic-bezier(.22,.68,0,1.2);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ════════ NAVBAR ════════ */
+    .navbar {
+      position: sticky; top: 0;
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      background-color: var(--nav-blur-bg);
+      z-index: 100; border-bottom: 1px solid var(--border-light);
+      padding: 0.9rem 0; transition: background-color 0.3s;
+    }
+    .nav-content { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem; font-weight: 400; letter-spacing: -0.01em;
+      background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+    }
+    .nav-links { display: flex; gap: 1.8rem; align-items: center; }
+    .nav-links a {
+      text-decoration: none; font-weight: 500; font-size: 0.9rem;
+      color: var(--text-secondary); transition: color 0.2s;
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: var(--accent);
+      border-radius: 2px; transition: width 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--accent); }
+    .nav-controls { display: flex; align-items: center; gap: 0.6rem; }
+    .theme-toggle {
+      background: var(--icon-bg); border: 1px solid var(--border-light);
+      width: 36px; height: 36px; border-radius: 99px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-secondary); font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .theme-toggle:hover { background: var(--accent); border-color: var(--accent); color: white; }
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px; background: var(--text-primary);
+      border-radius: 2px; transition: all 0.3s ease; transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--bg-card); border-bottom: 1px solid var(--border-light);
+        padding: 1rem 1.5rem; box-shadow: var(--shadow-md);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid var(--border-light); width: 100%; }
+      .nav-links a:last-child { border-bottom: none; }
+      .nav-links a::after { display: none; }
+    }
+
+    /* ════════ HERO ════════ */
+    #home {
+      position: relative; overflow: hidden;
+      padding: 5rem 0 4rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% -10%, rgba(var(--accent-rgb), 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(168,85,247,0.07) 0%, transparent 60%);
+    }
+    .hero-grid-pattern {
+      position: absolute; inset: 0; z-index: 0; opacity: 0.35;
+      background-image: linear-gradient(var(--border-light) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+      background-size: 32px 32px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    body.dark .hero-grid-pattern { opacity: 0.15; }
+    .hero-content {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 1.2rem;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--bg-card); border: 1px solid var(--border-light);
+      padding: 0.4rem 1rem; border-radius: 99px; font-size: 0.8rem;
+      font-weight: 500; color: var(--text-secondary);
+      box-shadow: var(--shadow-sm); animation: fadeDown 0.6s ease both;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px; background: #22c55e;
+      border-radius: 50%; box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,0.25)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,0.1)} }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:none} }
+
+    .avatar {
+      background: linear-gradient(145deg, var(--accent), #c084fc);
+      width: 120px; height: 120px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; color: white;
+      box-shadow: 0 0 0 6px var(--bg-primary), 0 0 0 8px rgba(var(--accent-rgb),0.3), var(--shadow-lg);
+      animation: fadeDown 0.6s 0.1s ease both;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.8rem; font-weight: 400; letter-spacing: -0.02em;
+      line-height: 1.05; animation: fadeDown 0.6s 0.2s ease both; opacity: 0;
+    }
+    .hero h1 span { font-style: italic; color: var(--accent); }
+
+    .typewriter-wrap {
+      font-size: 1.15rem; color: var(--text-secondary); font-weight: 400;
+      min-height: 1.8rem; animation: fadeDown 0.6s 0.35s ease both; opacity: 0;
+    }
+    .typewriter-prefix { color: var(--text-secondary); }
+    .typewriter-text { color: var(--text-primary); font-weight: 600; }
+    .cursor {
+      display: inline-block; width: 2px; height: 1em;
+      background: var(--accent); margin-left: 2px;
+      vertical-align: text-bottom; animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .btn-group {
+      display: flex; gap: 0.9rem; flex-wrap: wrap;
+      justify-content: center; margin-top: 0.5rem;
+      animation: fadeDown 0.6s 0.5s ease both; opacity: 0;
+    }
+    .btn-primary, .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.8rem; border-radius: 99px; font-weight: 600;
+      font-size: 0.9rem; text-decoration: none; transition: all 0.25s;
+      font-family: 'Outfit', sans-serif; letter-spacing: 0.01em;
+    }
+    .btn-primary {
+      background: var(--accent); color: white; border: none; cursor: pointer;
+      box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.4);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(var(--accent-rgb),0.5); }
+    .btn-outline {
+      border: 1.5px solid var(--border-light); color: var(--text-primary);
+      background: var(--bg-card); box-shadow: var(--shadow-sm);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* STAT ROW */
+    .stat-row {
+      display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 1rem; animation: fadeDown 0.6s 0.65s ease both; opacity: 0;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--text-primary); line-height: 1; }
+    .stat-num sup { font-size: 1rem; }
+    .stat-label { font-size: 0.75rem; color: var(--text-secondary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.2rem; }
+    .stat-divider { width: 1px; background: var(--border-light); align-self: stretch; }
+
+    /* ════════ ABOUT ════════ */
+    #about { background: var(--bg-secondary); }
+    .about-content {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      background: var(--bg-card); border-radius: 2rem; padding: 2.5rem;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--border-light);
+    }
+    .about-text { flex: 2; min-width: 280px; }
+    .about-text p { margin-bottom: 1rem; line-height: 1.75; color: var(--text-secondary); font-size: 0.97rem; }
+    .about-text p strong { color: var(--text-primary); font-weight: 600; }
+    .about-sidebar {
+      flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .info-panel {
+      background: var(--bg-primary); border-radius: 1.2rem;
+      padding: 1.3rem; border: 1px solid var(--border-light);
+    }
+    .info-panel h3 {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.9rem;
+    }
+    .info-row {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.855rem; color: var(--text-secondary); margin-bottom: 0.55rem;
+      line-height: 1.4;
+    }
+    .info-row i { color: var(--accent); width: 14px; flex-shrink: 0; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tags span {
+      background: var(--accent-light); color: var(--accent);
+      padding: 0.35rem 0.85rem; border-radius: 99px;
+      font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(var(--accent-rgb),0.2);
+    }
+
+    /* ════════ EXPERIENCE TIMELINE ════════ */
+    #experience { background: var(--bg-primary); }
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 20px; top: 12px;
+      bottom: 12px; width: 2px; background: var(--border-light); border-radius: 2px;
+    }
+    .tl-item { display: flex; gap: 2rem; position: relative; padding-bottom: 2.5rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot-col { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
+    .tl-dot {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--accent-light); border: 2px solid rgba(var(--accent-rgb),0.35);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 1rem; flex-shrink: 0; z-index: 1;
+      transition: all 0.3s;
+    }
+    .tl-item:hover .tl-dot { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 0 0 5px rgba(var(--accent-rgb),0.15); }
+    .exp-card {
+      flex: 1; background: var(--bg-card); border-radius: 1.5rem;
+      padding: 1.5rem 1.8rem; border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm); transition: all 0.3s ease;
+    }
+    .exp-card:hover { transform: translateX(4px); box-shadow: var(--shadow-md); border-color: rgba(var(--accent-rgb),0.4); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
+    .exp-header h3 { font-size: 1.1rem; font-weight: 700; }
+    .exp-company { font-size: 0.9rem; color: var(--accent); font-weight: 600; margin-top: 0.2rem; }
+    .exp-period {
+      font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);
+      background: var(--icon-bg); padding: 0.28rem 0.85rem; border-radius: 99px;
+      display: flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+      border: 1px solid var(--border-light);
+    }
+    .exp-card > p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tech-stack span {
+      background: var(--icon-bg); font-size: 0.72rem; padding: 0.2rem 0.7rem;
+      border-radius: 99px; font-weight: 600; color: var(--text-secondary);
+      border: 1px solid var(--border-light);
+    }
+
+    /* ════════ PROJECTS ════════ */
+    #projects { background: var(--bg-secondary); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--bg-card); border-radius: 1.5rem;
+      border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(var(--accent-rgb),0.4); }
+    .project-card-top {
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent), #a855f7);
+    }
+    .project-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .project-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--accent-light); display: flex; align-items: center;
+      justify-content: center; font-size: 1.3rem; color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .project-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .project-card p { color: var(--text-secondary); font-size: 0.87rem; line-height: 1.6; margin-bottom: 1rem; flex: 1; }
+
+    /* ════════ EDUCATION ════════ */
+    #education { background: var(--bg-primary); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+    .edu-card {
+      background: var(--bg-card); border-radius: 1.3rem; padding: 1.4rem;
+      border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease; display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .edu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(var(--accent-rgb),0.35); }
+    .edu-icon-wrap {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      background: var(--accent-light); display: flex; align-items: center;
+      justify-content: center; font-size: 1.1rem; color: var(--accent);
+    }
+    .edu-info { flex: 1; }
+    .edu-card h3 { font-size: 0.92rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.25rem; }
+    .edu-inst { font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 0.2rem; }
+    .edu-year {
+      display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+      color: var(--text-secondary); background: var(--icon-bg);
+      padding: 0.15rem 0.6rem; border-radius: 99px; border: 1px solid var(--border-light);
+    }
+
+    /* ════════ CONTACT ════════ */
+    #contact { background: var(--bg-secondary); }
+    .contact-wrapper {
+      background: var(--bg-card); border-radius: 2rem; padding: 3rem;
+      text-align: center; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
+      position: relative; overflow: hidden;
+    }
+    .contact-wrapper::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--accent), #a855f7, var(--accent));
+      background-size: 200%;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer { 0%{background-position:0%} 100%{background-position:200%} }
+    .contact-wrapper > p { font-size: 1.05rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+    .contact-icons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin: 2rem 0 1.5rem; }
+    .contact-icon {
+      width: 56px; height: 56px; border-radius: 56px;
+      background: var(--icon-bg); border: 1px solid var(--border-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--accent); transition: all 0.25s; text-decoration: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-icon:hover { background: var(--accent); color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(var(--accent-rgb),0.4); border-color: var(--accent); }
+    .contact-email {
+      font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .contact-email a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .contact-email a:hover { color: var(--accent-hover); }
+
+    /* ════════ FOOTER ════════ */
+    footer {
+      border-top: 1px solid var(--border-light); padding: 1.8rem 0;
+      text-align: center; color: var(--text-secondary); font-size: 0.85rem;
+    }
+
+    /* ════════ SCROLL TOP ════════ */
+    .scroll-top {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--accent); width: 42px; height: 42px;
+      border-radius: 99px; display: flex; align-items: center;
+      justify-content: center; color: white; font-size: 1rem;
+      opacity: 0; visibility: hidden; transition: all 0.25s;
+      cursor: pointer; z-index: 99; border: none;
+      box-shadow: 0 4px 15px rgba(var(--accent-rgb),0.4);
+    }
+    .scroll-top.show { opacity: 1; visibility: visible; }
+    .scroll-top:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+    /* ════════ RESPONSIVE ════════ */
+    @media (max-width: 768px) {
+      .section-title { font-size: 2rem; }
+      .hero h1 { font-size: 2.6rem; }
+      section { padding: 4rem 0; }
+      .about-content { flex-direction: column; padding: 1.5rem; }
+      .timeline::before { left: 18px; }
+      .tl-item { gap: 1.2rem; }
+      .contact-wrapper { padding: 2rem 1.5rem; }
+      .stat-divider { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.1rem; }
+      .btn-group { flex-direction: column; width: 100%; align-items: stretch; }
+      .btn-primary, .btn-outline { justify-content: center; }
+      .tl-dot { width: 34px; height: 34px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-content">
+      <span class="logo">Bivek Man Singh</span>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="home" style="padding:5rem 0 4rem;">
+      <div class="hero-bg"></div>
+      <div class="hero-grid-pattern"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Available for Collaborations &amp; Consulting
+        </div>
+
+        <div class="avatar"><i class="fas fa-user-tie"></i></div>
+
+        <h1>Bivek <span>Man</span> Singh</h1>
+
+        <div class="typewriter-wrap">
+          <span class="typewriter-prefix">I specialize in </span><span class="typewriter-text" id="typewriterText"></span><span class="cursor"></span>
+        </div>
+
+        <div class="btn-group">
+          <a href="#projects" class="btn-primary"><i class="fas fa-briefcase"></i> View Work</a>
+          <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Get in Touch</a>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="stat-num"><span class="count" data-target="15">0</span><sup>+</sup></div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num"><span class="count" data-target="40">0</span><sup>+</sup></div>
+            <div class="stat-label">SAP Projects</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num"><span class="count" data-target="22">0</span></div>
+            <div class="stat-label">RPA Bots Deployed</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-num"><span class="count" data-target="5">0</span></div>
+            <div class="stat-label">SAP Landscapes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="fade-up">
+          <div class="section-label">About Me</div>
+          <h2 class="section-title">IT Architect. Educator.<br><em style="font-style:italic;color:var(--accent)">Problem Solver.</em></h2>
+        </div>
+        <div class="about-content fade-up">
+          <div class="about-text">
+            <p>Hi, I'm Bivek — an accomplished IT professional with <strong>over 15 years of experience</strong> in enterprise infrastructure, SAP BASIS, network security, and RPA automation. Currently serving as <strong>IT Officer at Surya Nepal Private Limited (SNPL)</strong>, Bhaktapur, I specialize in aligning complex technical landscapes with dynamic business needs.</p>
+            <p>My expertise spans SAP NetWeaver, SAP HANA, VMware vSphere, Oracle Database, Juniper Networks, Cisco ASA security, and intelligent automation using UiPath and AutomationEdge. I hold a <strong>Master's degree in Computer Engineering</strong> (NCIT, 2023) and a Bachelor's in Electronics &amp; Communication Engineering (NEC, 2011), and am certified in <strong>SAP HANA and Juniper Networks</strong>.</p>
+            <p>Beyond my corporate role, I serve as a <strong>part-time lecturer</strong> at AITM College (BCU) and Academia College (TU), teaching Data Center Operations, Business Systems Solutions, and Digital Logic — sharing real enterprise experience with aspiring IT professionals.</p>
+            <p>📍 Balkot-2, Bhaktapur, Nepal · Engineering Council No. 3992 E&amp;C · Open for collaborations &amp; consulting.</p>
+          </div>
+          <div class="about-sidebar">
+            <div class="info-panel">
+              <h3>Contact &amp; Links</h3>
+              <div class="info-row"><i class="fas fa-envelope"></i> biveka1@gmail.com</div>
+              <div class="info-row"><i class="fas fa-phone"></i> +977-9841364178</div>
+              <div class="info-row"><i class="fas fa-globe"></i> bivekmansingh.com.np</div>
+              <div class="info-row"><i class="fas fa-map-marker-alt"></i> Bhaktapur, Nepal</div>
+              <div class="info-row"><i class="fas fa-language"></i> English · Nepali · Hindi · Maithili</div>
+            </div>
+            <div class="info-panel">
+              <h3>Core Toolkit</h3>
+              <div class="skill-tags">
+                <span>SAP BASIS</span><span>SAP HANA</span><span>NetWeaver</span>
+                <span>Fiori</span><span>VMware</span><span>Oracle DB</span>
+                <span>Juniper</span><span>Cisco ASA</span><span>PowerShell</span>
+                <span>Python</span><span>VBScript</span><span>UiPath</span>
+                <span>AutomationEdge</span><span>Tableau</span><span>Linux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+        <div class="fade-up">
+          <div class="section-label">Career</div>
+          <h2 class="section-title">Experience</h2>
+        </div>
+        <div class="timeline">
+
+          <div class="tl-item fade-up">
+            <div class="tl-dot-col">
+              <div class="tl-dot"><i class="fas fa-building"></i></div>
+            </div>
+            <div class="exp-card">
+              <div class="exp-header">
+                <div>
+                  <h3>IT Officer</h3>
+                  <div class="exp-company"><i class="fas fa-building" style="margin-right:0.35rem"></i>Surya Nepal Private Limited (SNPL)</div>
+                </div>
+                <div class="exp-period"><i class="fas fa-calendar-alt"></i> Dec 2014 – Present</div>
+              </div>
+              <p>Leading SAP BASIS administration, infrastructure operations, network security, and RPA automation in a large enterprise environment. Upgraded SAP ERP from EHP5 → EHP8 across four landscapes, migrated to VMware virtual infrastructure, configured Oracle Data Guard for DR, implemented SAP Fiori apps, and successfully deployed 22 RPA bots via AutomationEdge + 2 via UiPath. Configured Cisco ASA 5525 HA firewall, IRM Seclore, Juniper SRX/EX HA, HPE Primera/3PAR storage, and enterprise Tableau Analytics.</p>
+              <div class="tech-stack">
+                <span>SAP BASIS</span><span>SAP HANA</span><span>EHP Upgrade</span><span>VMware vSphere</span>
+                <span>Oracle Data Guard</span><span>SAP Fiori</span><span>AutomationEdge</span><span>UiPath</span>
+                <span>Cisco ASA</span><span>Juniper SRX/EX</span><span>HPE Storage</span><span>Tableau</span><span>IRM Seclore</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item fade-up">
+            <div class="tl-dot-col">
+              <div class="tl-dot"><i class="fas fa-server"></i></div>
+            </div>
+            <div class="exp-card">
+              <div class="exp-header">
+                <div>
+                  <h3>System Administrator</h3>
+                  <div class="exp-company"><i class="fas fa-building" style="margin-right:0.35rem"></i>Alfa Beta Education Consultancy</div>
+                </div>
+                <div class="exp-period"><i class="fas fa-calendar-alt"></i> May 2013 – Dec 2014</div>
+              </div>
+              <p>Mid-level sysadmin managing IT infrastructure, servers, and network systems. Served as Pearson VUE Technical Administrator and TOEFL Center Exam Administrator. Handled G Suite, end-to-end IT maintenance including printers, DVRs, biometric attendance devices, and signage systems.</p>
+              <div class="tech-stack">
+                <span>Pearson VUE</span><span>TOEFL Admin</span><span>G Suite</span><span>Networking</span><span>System Admin</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item fade-up">
+            <div class="tl-dot-col">
+              <div class="tl-dot"><i class="fas fa-network-wired"></i></div>
+            </div>
+            <div class="exp-card">
+              <div class="exp-header">
+                <div>
+                  <h3>Network Support Technician</h3>
+                  <div class="exp-company"><i class="fas fa-building" style="margin-right:0.35rem"></i>Web Surfer Communication Pvt. Ltd.</div>
+                </div>
+                <div class="exp-period"><i class="fas fa-calendar-alt"></i> Apr 2012 – Dec 2012</div>
+              </div>
+              <p>Frontline technical support for internet connectivity at an ISP. Configured and maintained routers and switches for corporate clients, and troubleshot wired and wireless DSL connectivity problems.</p>
+              <div class="tech-stack">
+                <span>Routers</span><span>Switches</span><span>DSL</span><span>ISP Support</span><span>TCP/IP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item fade-up">
+            <div class="tl-dot-col">
+              <div class="tl-dot"><i class="fas fa-chalkboard-teacher"></i></div>
+            </div>
+            <div class="exp-card">
+              <div class="exp-header">
+                <div>
+                  <h3>Part-Time Lecturer</h3>
+                  <div class="exp-company"><i class="fas fa-university" style="margin-right:0.35rem"></i>AITM College (BCU) &amp; Academia College (TU)</div>
+                </div>
+                <div class="exp-period"><i class="fas fa-calendar-alt"></i> Ongoing</div>
+              </div>
+              <p>Teaching undergraduate-level courses including Data Center Operations, Business Systems Solutions, and Digital Logic. Bridging 15+ years of enterprise IT experience with academic instruction to develop job-ready IT professionals.</p>
+              <div class="tech-stack">
+                <span>Data Center Ops</span><span>Digital Logic</span><span>Business Systems</span><span>ERP / CRM</span><span>Teaching</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="fade-up">
+          <div class="section-label">Work</div>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+
+          <div class="project-card fade-up">
+            <div class="project-card-top"></div>
+            <div class="project-card-body">
+              <div class="project-icon"><i class="fas fa-robot"></i></div>
+              <h3>SAP Job Monitor Dashboard</h3>
+              <p>PowerShell + NCo 3.0 RFC solution monitoring SAP background jobs — HTML dashboards, CSV exports, and SMTP email alerts on failure across multiple systems.</p>
+              <div class="tech-stack"><span>PowerShell</span><span>NCo 3.0</span><span>SAP RFC</span><span>SMTP</span><span>.NET 6</span></div>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-card-top"></div>
+            <div class="project-card-body">
+              <div class="project-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+              <h3>SAP EHP5 → EHP8 Upgrade</h3>
+              <p>Full SAP ERP upgrade across four landscapes, migrating to VMware vSphere virtual infrastructure and upgrading OS from Windows Server 2012 to 2016.</p>
+              <div class="tech-stack"><span>SAP BASIS</span><span>VMware</span><span>Windows Server</span><span>Oracle</span></div>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-card-top"></div>
+            <div class="project-card-body">
+              <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+              <h3>HA Firewall &amp; Network Setup</h3>
+              <p>Deployed Cisco ASA 5525 in High Availability mode. Configured Juniper SRX routers &amp; EX switches in HA. Implemented IRM Seclore for enterprise data rights management.</p>
+              <div class="tech-stack"><span>Cisco ASA</span><span>Juniper SRX</span><span>IRM Seclore</span><span>HA</span></div>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-card-top"></div>
+            <div class="project-card-body">
+              <div class="project-icon"><i class="fas fa-database"></i></div>
+              <h3>Oracle Data Guard DR</h3>
+              <p>Configured Oracle Data Guard for Disaster Recovery across ECC, BW, and GRC SAP systems, ensuring high availability and business continuity.</p>
+              <div class="tech-stack"><span>Oracle</span><span>Data Guard</span><span>DR</span><span>SAP ECC</span><span>BW / GRC</span></div>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-card-top"></div>
+            <div class="project-card-body">
+              <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+              <h3>NEPSE Portfolio Tracker</h3>
+              <p>Single-file web app for tracking NEPSE stock portfolio — live gain/loss calculations, sector analysis, and a clean responsive dashboard in vanilla HTML/JS.</p>
+              <div class="tech-stack"><span>HTML</span><span>JavaScript</span><span>CSS</span><span>NEPSE</span></div>
+            </div>
+          </div>
+
+          <div class="project-card fade-up">
+            <div class="project-card-top"></div>
+            <div class="project-card-body">
+              <div class="project-icon"><i class="fas fa-cogs"></i></div>
+              <h3>22-Bot RPA Deployment</h3>
+              <p>Designed and deployed 22 RPA bots using AutomationEdge and 2 via UiPath across SNPL operations, eliminating repetitive manual processes and saving hundreds of person-hours annually.</p>
+              <div class="tech-stack"><span>AutomationEdge</span><span>UiPath</span><span>RPA</span><span>Process Automation</span></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="fade-up" style="text-align:center;margin-top:2.5rem;">
+          <a href="https://bivekmansingh.com.np" target="_blank" class="btn-outline">
+            <i class="fas fa-globe"></i> Visit My Website
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container">
+        <div class="fade-up">
+          <div class="section-label">Credentials</div>
+          <h2 class="section-title">Education &amp; Certifications</h2>
+        </div>
+        <div class="edu-grid">
+
+          <div class="edu-card fade-up">
+            <div class="edu-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
+            <div class="edu-info">
+              <h3>Master of Engineering – Computer Engineering</h3>
+              <div class="edu-inst">Nepal College of Information Technology (NCIT)</div>
+              <div class="edu-year">2023</div>
+            </div>
+          </div>
+
+          <div class="edu-card fade-up">
+            <div class="edu-icon-wrap"><i class="fas fa-microchip"></i></div>
+            <div class="edu-info">
+              <h3>Bachelor of Engineering – Electronics &amp; Communication</h3>
+              <div class="edu-inst">Nepal Engineering College (NEC)</div>
+              <div class="edu-year">2011</div>
+            </div>
+          </div>
+
+          <div class="edu-card fade-up">
+            <div class="edu-icon-wrap"><i class="fas fa-certificate"></i></div>
+            <div class="edu-info">
+              <h3>SAP HANA Certification</h3>
+              <div class="edu-inst">SAP SE</div>
+              <div class="edu-year">Certified</div>
+            </div>
+          </div>
+
+          <div class="edu-card fade-up">
+            <div class="edu-icon-wrap"><i class="fas fa-network-wired"></i></div>
+            <div class="edu-info">
+              <h3>Juniper Networks Certification</h3>
+              <div class="edu-inst">Juniper Networks</div>
+              <div class="edu-year">Certified</div>
+            </div>
+          </div>
+
+          <div class="edu-card fade-up">
+            <div class="edu-icon-wrap"><i class="fas fa-flag"></i></div>
+            <div class="edu-info">
+              <h3>Computer Hardware &amp; Networking</h3>
+              <div class="edu-inst">Govt. of India Sponsorship · A+, N+, CCNA, RHEL, ITIL Exposure</div>
+              <div class="edu-year">Training Program</div>
+            </div>
+          </div>
+
+          <div class="edu-card fade-up">
+            <div class="edu-icon-wrap"><i class="fas fa-id-badge"></i></div>
+            <div class="edu-info">
+              <h3>Engineering Council Membership</h3>
+              <div class="edu-inst">Nepal Engineering Council – No. 3992 E&amp;C</div>
+              <div class="edu-year">Registered Member</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="fade-up">
+          <div class="section-label">Get in Touch</div>
+          <h2 class="section-title">Let's Connect</h2>
+        </div>
+        <div class="contact-wrapper fade-up">
+          <p>Have an SAP challenge, infrastructure project, or collaboration in mind? Feel free to reach out — I typically respond within 48 hours.</p>
+          <div class="contact-icons">
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" aria-label="GitHub" class="contact-icon"><i class="fab fa-github"></i></a>
+            <a href="https://bivekmansingh.com.np" target="_blank" aria-label="Website" class="contact-icon"><i class="fas fa-globe"></i></a>
+            <a href="mailto:biveka1@gmail.com" aria-label="Email" class="contact-icon"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+9779841364178" aria-label="Phone" class="contact-icon"><i class="fas fa-phone"></i></a>
+          </div>
+          <div class="contact-email">
+            <i class="fas fa-at" style="color:var(--accent)"></i>
+            <a href="mailto:biveka1@gmail.com">biveka1@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Bivek Man Singh &nbsp;·&nbsp; SAP BASIS &amp; IT Infrastructure Specialist &nbsp;·&nbsp; Built with <i class="fas fa-heart" style="color:var(--accent)"></i> &amp; vanilla craft</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    (function() {
+
+      /* ── DARK MODE ── */
+      const toggleBtn = document.getElementById('darkModeToggle');
+      const body = document.body;
+      const icon = toggleBtn.querySelector('i');
+      const saved = localStorage.getItem('theme');
+      const applyDark = () => { body.classList.add('dark'); icon.className = 'fas fa-sun'; };
+      const applyLight = () => { body.classList.remove('dark'); icon.className = 'fas fa-moon'; };
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) applyDark();
+      toggleBtn.addEventListener('click', () => {
+        if (body.classList.contains('dark')) { applyLight(); localStorage.setItem('theme','light'); }
+        else { applyDark(); localStorage.setItem('theme','dark'); }
+      });
+
+      /* ── HAMBURGER ── */
+      const ham = document.getElementById('hamburger');
+      const nav = document.getElementById('navLinks');
+      ham.addEventListener('click', () => {
+        ham.classList.toggle('open');
+        nav.classList.toggle('open');
+      });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        ham.classList.remove('open'); nav.classList.remove('open');
+      }));
+
+      /* ── SMOOTH SCROLL ── */
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+          const id = link.getAttribute('href');
+          if (id && id !== '#') {
+            const el = document.querySelector(id);
+            if (el) {
+              e.preventDefault();
+              window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+              history.pushState(null, null, id);
+            }
+          }
+        });
+      });
+
+      /* ── ACTIVE NAV ── */
+      const sections = document.querySelectorAll('section[id]');
+      const navAs = document.querySelectorAll('.nav-links a');
+      function updateNav() {
+        let cur = '';
+        sections.forEach(s => { if (window.scrollY + 100 >= s.offsetTop) cur = s.id; });
+        navAs.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+        });
+      }
+      window.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
+
+      /* ── SCROLL TOP ── */
+      const scrollBtn = document.getElementById('scrollTopBtn');
+      window.addEventListener('scroll', () => {
+        scrollBtn.classList.toggle('show', window.scrollY > 500);
+      }, { passive: true });
+      scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      /* ── TYPEWRITER ── */
+      const roles = ['SAP BASIS Administration', 'Infrastructure Architecture', 'RPA Automation', 'Network Security', 'Enterprise IT Consulting'];
+      let ri = 0, ci = 0, deleting = false;
+      const el = document.getElementById('typewriterText');
+      function type() {
+        const word = roles[ri];
+        if (!deleting) {
+          el.textContent = word.slice(0, ++ci);
+          if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+        } else {
+          el.textContent = word.slice(0, --ci);
+          if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+        }
+        setTimeout(type, deleting ? 45 : 80);
+      }
+      type();
+
+      /* ── STAT COUNTERS ── */
+      function countUp(el, target) {
+        let current = 0;
+        const step = Math.ceil(target / 40);
+        const interval = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current;
+          if (current >= target) clearInterval(interval);
+        }, 40);
+      }
+      let counted = false;
+      const statSection = document.getElementById('home');
+      const countEls = document.querySelectorAll('.count');
+      const statObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !counted) {
+          counted = true;
+          countEls.forEach(el => countUp(el, parseInt(el.dataset.target)));
+        }
+      }, { threshold: 0.3 });
+      statObs.observe(statSection);
+
+      /* ── FADE-UP SCROLL REVEAL ── */
+      const fadeEls = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            e.target.style.transitionDelay = (i % 4) * 0.08 + 's';
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      fadeEls.forEach(el => observer.observe(el));
+
+    })();
+  </script>
+</body>
+</html>
